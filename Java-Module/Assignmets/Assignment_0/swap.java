@@ -1,0 +1,14 @@
+class swap
+{
+	public static void main(String args[])
+	{
+		int a = 3,b =54;
+		int c;
+		System.out.printf("Before swap, numbers are a = %d and b = %d",a,b);
+		c = a;
+		a = b;
+		b = c;
+		System.out.printf("\nAfter swap, numbers are a = %d and b = %d",a,b);
+	}
+}
+	
