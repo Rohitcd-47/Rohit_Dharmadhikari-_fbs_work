@@ -1,0 +1,39 @@
+6. Write an SQL statement to create a table named jobs including columns job_id,
+job_title, min_salary and max_salary, and make sure that, the default value
+for job_title is blank and min_salary is 8000 and max_salary is NULL will be
+entered automatically at the time of insertion if no value assigned for the
+specified columns.
+
+
+
+table jobs;
+
+ alter table jobs
+    -> modify column job_title varchar(30) default " ";
+
+alter table jobs
+    -> modify column min_salary double default 8000;
+
+insert into jobs (job_id,max_salary)
+    -> values(4,65000)
+
+desc jobs;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| job_id     | int         | NO   | PRI | NULL    |       |
+| job_title  | varchar(30) | YES  |     |         |       |
+| min_salary | double      | YES  |     | 8000    |       |
+| max_salary | double      | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+
+table jobs;
++--------+------------------+------------+------------+
+| job_id | job_title        | min_salary | max_salary |
++--------+------------------+------------+------------+
+|      1 | Jav Developer    |      30000 |     200000 |
+|      2 | Python Developer |      35000 |     100000 |
+|      3 | Tester           |      20000 |      80000 |
+|      4 |                  |       8000 |      65000 |
++--------+------------------+------------+------------+

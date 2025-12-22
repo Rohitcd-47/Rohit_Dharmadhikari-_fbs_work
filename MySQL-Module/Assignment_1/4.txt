@@ -1,0 +1,17 @@
+4. Write a SQL statement to create a table named job_histry including columns
+employee_id, start_date, end_date, job_id and department_id
+
+
+create table job_history
+(employee_id int,start_date date,end_date date,job_id int,department_id int);
+
+show tables;
+
++------------------+
+| Tables_in_assi_1 |
++------------------+
+| countries        |
+| job_histry       |
+| jobs             |
++------------------+
+

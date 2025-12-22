@@ -1,0 +1,24 @@
+2. Write an SQL statement to create a simple table countries including columns
+country_id,country_name and region_id. After this display the structure of
+table as below
+
+---------------------- Queries ----------------------------------------------
+
+
+create database assignment_1;
+
+use assignment_1
+
+create table countries
+(country_id int, country_name varchar(20), region_id int);
+
+desc countries;
+
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| county_id    | int         | YES  |     | NULL    |       |
+| country_name | varchar(20) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+

@@ -1,0 +1,5 @@
+1. Login to MySQL and view all databases already present. You should get
+following result :
+
+
+show databases;

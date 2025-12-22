@@ -1,0 +1,28 @@
+7. Create a Department table with following structure
+
+
+create table department
+(Department_id decimal(4,0),Department_name varchar(20),Manager_id decimal(6,0),Location_id decimal(4,0));
+
+desc department;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| Department_id   | decimal(4,0) | YES  |     | NULL    |       |
+| Department_name | varchar(20)  | YES  |     | NULL    |       |
+| Manager_id      | decimal(6,0) | YES  |     | NULL    |       |
+| Location_id     | decimal(4,0) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+
+alter table department
+add primary key(Department_id, Manager_id);
+
+desc department;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| Department_id   | decimal(4,0) | NO   | PRI | NULL    |       |
+| Department_name | varchar(20)  | YES  |     | NULL    |       |
+| Manager_id      | decimal(6,0) | NO   | PRI | NULL    |       |
+| Location_id     | decimal(4,0) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+

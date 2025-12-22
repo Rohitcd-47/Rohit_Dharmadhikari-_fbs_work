@@ -1,0 +1,54 @@
+3. Write an SQL statement to create a table named jobs including columns
+job_id, job_title, min_salary, max_salary and check whether the
+max_salary amount exceeding the upper limit 25000. Also set job_id as
+primary key and entering null values for job_title is not allowed.
+
+
+use database assignment_1;
+
+create table jobs
+(job_id int, job_title varchar(30), min_salary double, max_salary double);
+
+
+desc jobs;
+
+alter table jobs
+add  primary key(job_id);
+
+
+insert into jobs (job_id,job_title,min_salary,max_salary)
+values(1,"Jav Developer",30000,200000),
+(2,"Python Developer", 35000,100000),
+(3,"Tester",20000,80000);
+
+
+alter table jobs
+modify column max_salary double check (max_salary <= 25000);
+
+
+alter table jobs
+modify column job_title varchar(30) not null;
+
+desc jobs;
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| job_id     | int         | NO   | PRI | NULL    |       |
+| job_title  | varchar(30) | YES  |     |         |       |
+| min_salary | double      | YES  |     | 8000    |       |
+| max_salary | double      | YES  |     | NULL    |       |
+
+
+table jobs;
++--------+------------------+------------+------------+
+| job_id | job_title        | min_salary | max_salary |
++--------+------------------+------------+------------+
+|      1 | Jav Developer    |      30000 |     200000 |
+|      2 | Python Developer |      35000 |     100000 |
+|      3 | Tester           |      20000 |      80000 |
+|      4 |                  |       8000 |      65000 |
++--------+------------------+------------+------------+
+
+
+

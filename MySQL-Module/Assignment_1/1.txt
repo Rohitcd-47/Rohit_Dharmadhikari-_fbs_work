@@ -1,0 +1,20 @@
+1. Login to MySQL and view all databases already present. You should get
+following result :
+
+
+show databases;
+
++----------------------+
+| Database             |
++----------------------+
+| assignment_1         |
+| employee             |
+| information_schema   |
+| mysql                |
+| parks_and_recreation |
+| performance_schema   |
+| sales                |
+| sept25               |
+| sys                  |
+| world_layoffs        |
++----------------------+
