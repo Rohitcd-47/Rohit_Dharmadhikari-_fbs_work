@@ -1,0 +1,262 @@
+
+create database assignment_3;
+use assignment_3;
+
+create table Employees (EMPLOYEE_ID int, FIRST_NAME VARCHAR(30),LAST_NAME VARCHAR(30),EMAIL VARCHAR(30),
+    -> PHONE_NUMBER VARCHAR(30), HIRE_DATE DATE, JOB_ID INT,SALARY DOUBLE,COMMISSION_PCT DOUBLE,MANAGER_ID INT,DEPARTMENT_ID INT );
+
+alter table employees modify job_id varchar(20);
+
+desc employees;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| EMPLOYEE_ID    | int         | YES  |     | NULL    |       |
+| FIRST_NAME     | varchar(30) | YES  |     | NULL    |       |
+| LAST_NAME      | varchar(30) | YES  |     | NULL    |       |
+| EMAIL          | varchar(30) | YES  |     | NULL    |       |
+| PHONE_NUMBER   | varchar(30) | YES  |     | NULL    |       |
+| HIRE_DATE      | date        | YES  |     | NULL    |       |
+| job_id         | varchar(20) | YES  |     | NULL    |       |
+| SALARY         | double      | YES  |     | NULL    |       |
+| COMMISSION_PCT | double      | YES  |     | NULL    |       |
+| MANAGER_ID     | int         | YES  |     | NULL    |       |
+| DEPARTMENT_ID  | int         | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+
+
+insert into employees values(100,'Steven','King','Sking',"512.123.4567","1987-06-17","AD_PRES",24000,0,200,10),
+    -> (101,'Neena','Kochhar','NKOCHHAR',"512.123.4568","1987-06-18","AD_VP",17000,0,200,10),
+    -> (102,"Lex","De Haan","LDEHAAN","515.123.4569","1987-06-19","AD_VP",17000,0,200,10),
+    -> (103,"Alexander","Hunold","AHUNOLD","590.423.4567","1987-06-20","IT_PROG",9000,0,103,60),
+    -> (104,"Bruce","Ernst","BERNST","590.423.4568","1987-06-21","IT_PROG",6000,0,103,60),
+    -> (105,"David","Austin","DAUSTIN","590.423.4569","1987-06-22","IT_PROG",4800,0,103,60),
+    -> (106,"Valli","Pataballa","VPATABAL","590.423.4560","1987-06-23","IT_PROG",4800,0,103,60),
+    -> (107,"Diana","Lorentz","DLORENTZ","590.423.4567","1987-06-24","IT_PROG",4200,0,114,30),
+    -> (108,"Nancy","Greenberg","NGREENBE","515.124.4569","1987-06-25","SA_MAN",12000,0,145,80),
+    -> (109,"Daniel","Faviet","DFAVIET","515.124.4169","1987-06-26","SA_MAN",9000,0,145,80);
+
+
+
+select * from employees;
++-------------+------------+-----------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | EMAIL    | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+-----------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         100 | Steven     | King      | Sking    | 512.123.4567 | 1987-06-17 | AD_PRES |  24000 |              0 |        200 |            10 |
+|         101 | Neena      | Kochhar   | NKOCHHAR | 512.123.4568 | 1987-06-18 | AD_VP   |  17000 |              0 |        200 |            10 |
+|         102 | Lex        | De Haan   | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   |  17000 |              0 |        200 |            10 |
+|         103 | Alexander  | Hunold    | AHUNOLD  | 590.423.4567 | 1987-06-20 | IT_PROG |   9000 |              0 |        103 |            60 |
+|         104 | Bruce      | Ernst     | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6000 |              0 |        103 |            60 |
+|         105 | David      | Austin    | DAUSTIN  | 590.423.4569 | 1987-06-22 | IT_PROG |   4800 |              0 |        103 |            60 |
+|         106 | Valli      | Pataballa | VPATABAL | 590.423.4560 | 1987-06-23 | IT_PROG |   4800 |              0 |        103 |            60 |
+|         107 | Diana      | Lorentz   | DLORENTZ | 590.423.4567 | 1987-06-24 | IT_PROG |   4200 |              0 |        114 |            30 |
+|         108 | Nancy      | Greenberg | NGREENBE | 515.124.4569 | 1987-06-25 | SA_MAN  |  12000 |              0 |        145 |            80 |
+|         109 | Daniel     | Faviet    | DFAVIET  | 515.124.4169 | 1987-06-26 | SA_MAN  |   9000 |              0 |        145 |            80 |
++-------------+------------+-----------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+
+
+alter table employees
+    -> add primary key (employee_id);
+
+
+desc employees;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| EMPLOYEE_ID    | int         | NO   | PRI | NULL    |       |
+| FIRST_NAME     | varchar(30) | YES  |     | NULL    |       |
+| LAST_NAME      | varchar(30) | YES  |     | NULL    |       |
+| EMAIL          | varchar(30) | YES  |     | NULL    |       |
+| PHONE_NUMBER   | varchar(30) | YES  |     | NULL    |       |
+| HIRE_DATE      | date        | YES  |     | NULL    |       |
+| job_id         | varchar(20) | YES  |     | NULL    |       |
+| SALARY         | double      | YES  |     | NULL    |       |
+| COMMISSION_PCT | double      | YES  |     | NULL    |       |
+| MANAGER_ID     | int         | YES  |     | NULL    |       |
+| DEPARTMENT_ID  | int         | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+
+
+
+create table department (DEPARTMENT_ID int primary key,DEPARTMENT_NAME VARCHAR(30),MANAGER_ID INT,LOCATION_ID INT);
+
+desc department;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| DEPARTMENT_ID   | int         | NO   | PRI | NULL    |       |
+| DEPARTMENT_NAME | varchar(30) | YES  |     | NULL    |       |
+| MANAGER_ID      | int         | YES  |     | NULL    |       |
+| LOCATION_ID     | int         | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2. Write a SQL statement to insert 3 rows by a single insert statement.
+
+insert into employees values(110,"Rohit","Dharmadhikari","ROHIT","9923175682","2025-12-12","IT_PROG",50000,0,103,60),
+    -> (111,"Sejal","Dharmadhikari","SEJAL","7706070656","2025-11-11","SA_MAN",45000,0,145,80);
+
+select * from employees;
++-------------+------------+---------------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME     | EMAIL    | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+---------------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         100 | Steven     | King          | Sking    | 512.123.4567 | 1987-06-17 | AD_PRES |  24000 |              0 |        200 |            10 |
+|         101 | Neena      | Kochhar       | NKOCHHAR | 512.123.4568 | 1987-06-18 | AD_VP   |  17000 |              0 |        200 |            10 |
+|         102 | Lex        | De Haan       | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   |  17000 |              0 |        200 |            10 |
+|         103 | Alexander  | Hunold        | AHUNOLD  | 590.423.4567 | 1987-06-20 | IT_PROG |   9000 |              0 |        103 |            60 |
+|         104 | Bruce      | Ernst         | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6000 |              0 |        103 |            60 |
+|         105 | David      | Austin        | DAUSTIN  | 590.423.4569 | 1987-06-22 | IT_PROG |   4800 |              0 |        103 |            60 |
+|         106 | Valli      | Pataballa     | VPATABAL | 590.423.4560 | 1987-06-23 | IT_PROG |   4800 |              0 |        103 |            60 |
+|         107 | Diana      | Lorentz       | DLORENTZ | 590.423.4567 | 1987-06-24 | IT_PROG |   4200 |              0 |        114 |            30 |
+|         108 | Nancy      | Greenberg     | NGREENBE | 515.124.4569 | 1987-06-25 | SA_MAN  |  12000 |              0 |        145 |            80 |
+|         109 | Daniel     | Faviet        | DFAVIET  | 515.124.4169 | 1987-06-26 | SA_MAN  |   9000 |              0 |        145 |            80 |
+|         110 | Rohit      | Dharmadhikari | ROHIT    | 9923175682   | 2025-12-12 | IT_PROG |  50000 |              0 |        103 |            60 |
+|         111 | Sejal      | Dharmadhikari | SEJAL    | 7706070656   | 2025-11-11 | SA_MAN  |  45000 |              0 |        145 |            80 |
++-------------+------------+---------------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Write a SQL statement to insert one row in jobs table to ensure that no duplicate value will be entered in the job_id column.
+
+create table jobs (JOB_ID VARCHAR(20) PRIMARY KEY,JOB_TITLE VARCHAR(50),MIN_SALARY DOUBLE,MAX_SALARY DOUBLE);
+
+insert into jobs values("AD_PRES",'PRESIDENT',20000,40000),
+    -> ("AD_VP","Administration Vice President",15000,30000),
+    -> ("AD_ASST","Administration Assistant",3000,6000),
+    -> ("FI_MGR","Finance Manager",8200,16000),
+    -> ("FI_ACCOUNT","Accountant",4200,9000),
+    -> ("AC_MGR","Accounting Manager",8200,16000),
+    -> ("AC_ACCOUNT","Public Accountant",4200,9000),
+    -> ("SA_MAN","Sales Manager",10000,20000);
+
+
+
+mysql> select * from jobs;
++------------+-------------------------------+------------+------------+
+| JOB_ID     | JOB_TITLE                     | MIN_SALARY | MAX_SALARY |
++------------+-------------------------------+------------+------------+
+| AC_ACCOUNT | Public Accountant             |       4200 |       9000 |
+| AC_MGR     | Accounting Manager            |       8200 |      16000 |
+| AD_ASST    | Administration Assistant      |       3000 |       6000 |
+| AD_PRES    | PRESIDENT                     |      20000 |      40000 |
+| AD_VP      | Administration Vice President |      15000 |      30000 |
+| FI_ACCOUNT | Accountant                    |       4200 |       9000 |
+| FI_MGR     | Finance Manager               |       8200 |      16000 |
+| SA_MAN     | Sales Manager                 |      10000 |      20000 |
++------------+-------------------------------+------------+------------+
+
+insert into jobs values("AD_PRES",'PRESIDENT',20000,40000);
+ERROR 1062 (23000): Duplicate entry 'AD_PRES' for key 'jobs.PRIMARY'
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+4. Write SQL statement to increment salary of each emp by 10%.
+
+update employees set salary = salary + salary * 0.10;
+
+table employees;
++-------------+------------+---------------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME     | EMAIL    | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+---------------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         100 | Steven     | King          | Sking    | 512.123.4567 | 1987-06-17 | AD_PRES |  26400 |              0 |        200 |            10 |
+|         101 | Neena      | Kochhar       | NKOCHHAR | 512.123.4568 | 1987-06-18 | AD_VP   |  18700 |              0 |        200 |            10 |
+|         102 | Lex        | De Haan       | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   |  18700 |              0 |        200 |            10 |
+|         103 | Alexander  | Hunold        | AHUNOLD  | 590.423.4567 | 1987-06-20 | IT_PROG |   9900 |              0 |        103 |            60 |
+|         104 | Bruce      | Ernst         | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6600 |              0 |        103 |            60 |
+|         105 | David      | Austin        | DAUSTIN  | 590.423.4569 | 1987-06-22 | IT_PROG |   5280 |              0 |        103 |            60 |
+|         106 | Valli      | Pataballa     | VPATABAL | 590.423.4560 | 1987-06-23 | IT_PROG |   5280 |              0 |        103 |            60 |
+|         107 | Diana      | Lorentz       | DLORENTZ | 590.423.4567 | 1987-06-24 | IT_PROG |   4620 |              0 |        114 |            30 |
+|         108 | Nancy      | Greenberg     | NGREENBE | 515.124.4569 | 1987-06-25 | SA_MAN  |  13200 |              0 |        145 |            80 |
+|         109 | Daniel     | Faviet        | DFAVIET  | 515.124.4169 | 1987-06-26 | SA_MAN  |   9900 |              0 |        145 |            80 |
+|         110 | Rohit      | Dharmadhikari | ROHIT    | 9923175682   | 2025-12-12 | IT_PROG |  55000 |              0 |        103 |            60 |
+|         111 | Sejal      | Dharmadhikari | SEJAL    | 7706070656   | 2025-11-11 | SA_MAN  |  49500 |              0 |        145 |            80 |
++-------------+------------+---------------+----------+--------------+------------+---------+--------+----------------+------------+---------------+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+5. Write a SQL statement to change the email column of employees table with 'not available' for those employees whose department_id is 80 and gets a
+commission is less than .20%
+
+update employees set email = "Not Available"
+where department_id = 80 && commission_pct < 0.20;
+
+table employees;
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME     | EMAIL         | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         100 | Steven     | King          | Sking         | 512.123.4567 | 1987-06-17 | AD_PRES |  26400 |              0 |        200 |            10 |
+|         101 | Neena      | Kochhar       | NKOCHHAR      | 512.123.4568 | 1987-06-18 | AD_VP   |  18700 |              0 |        200 |            10 |
+|         102 | Lex        | De Haan       | LDEHAAN       | 515.123.4569 | 1987-06-19 | AD_VP   |  18700 |              0 |        200 |            10 |
+|         103 | Alexander  | Hunold        | AHUNOLD       | 590.423.4567 | 1987-06-20 | IT_PROG |   9900 |              0 |        103 |            60 |
+|         104 | Bruce      | Ernst         | BERNST        | 590.423.4568 | 1987-06-21 | IT_PROG |   6600 |              0 |        103 |            60 |
+|         105 | David      | Austin        | DAUSTIN       | 590.423.4569 | 1987-06-22 | IT_PROG |   5280 |              0 |        103 |            60 |
+|         106 | Valli      | Pataballa     | VPATABAL      | 590.423.4560 | 1987-06-23 | IT_PROG |   5280 |              0 |        103 |            60 |
+|         107 | Diana      | Lorentz       | DLORENTZ      | 590.423.4567 | 1987-06-24 | IT_PROG |   4620 |              0 |        114 |            30 |
+|         108 | Nancy      | Greenberg     | Not Available | 515.124.4569 | 1987-06-25 | SA_MAN  |  13200 |              0 |        145 |            80 |
+|         109 | Daniel     | Faviet        | Not Available | 515.124.4169 | 1987-06-26 | SA_MAN  |   9900 |              0 |        145 |            80 |
+|         110 | Rohit      | Dharmadhikari | ROHIT         | 9923175682   | 2025-12-12 | IT_PROG |  55000 |              0 |        103 |            60 |
+|         111 | Sejal      | Dharmadhikari | Not Available | 7706070656   | 2025-11-11 | SA_MAN  |  49500 |              0 |        145 |            80 |
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Write a SQL statement to change the email column of employees table with 'not available' for those employees who belongs to the 'Purchasing' department.
+
+update employees set email = "Not Available"
+where department_id in (select department_id from department where department_name = "Purchasing");
+
+table employees;
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME     | EMAIL         | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         100 | Steven     | King          | Sking         | 512.123.4567 | 1987-06-17 | AD_PRES |  26400 |              0 |        200 |            10 |
+|         101 | Neena      | Kochhar       | NKOCHHAR      | 512.123.4568 | 1987-06-18 | AD_VP   |  18700 |              0 |        200 |            10 |
+|         102 | Lex        | De Haan       | LDEHAAN       | 515.123.4569 | 1987-06-19 | AD_VP   |  18700 |              0 |        200 |            10 |
+|         103 | Alexander  | Hunold        | AHUNOLD       | 590.423.4567 | 1987-06-20 | IT_PROG |   9900 |              0 |        103 |            60 |
+|         104 | Bruce      | Ernst         | BERNST        | 590.423.4568 | 1987-06-21 | IT_PROG |   6600 |              0 |        103 |            60 |
+|         105 | David      | Austin        | DAUSTIN       | 590.423.4569 | 1987-06-22 | IT_PROG |   5280 |              0 |        103 |            60 |
+|         106 | Valli      | Pataballa     | VPATABAL      | 590.423.4560 | 1987-06-23 | IT_PROG |   5280 |              0 |        103 |            60 |
+|         107 | Diana      | Lorentz       | Not Available | 590.423.4567 | 1987-06-24 | IT_PROG |   4620 |              0 |        114 |            30 |
+|         108 | Nancy      | Greenberg     | Not Available | 515.124.4569 | 1987-06-25 | SA_MAN  |  13200 |              0 |        145 |            80 |
+|         109 | Daniel     | Faviet        | Not Available | 515.124.4169 | 1987-06-26 | SA_MAN  |   9900 |              0 |        145 |            80 |
+|         110 | Rohit      | Dharmadhikari | ROHIT         | 9923175682   | 2025-12-12 | IT_PROG |  55000 |              0 |        103 |            60 |
+|         111 | Sejal      | Dharmadhikari | Not Available | 7706070656   | 2025-11-11 | SA_MAN  |  49500 |              0 |        145 |            80 |
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7. Write a SQL statement to change the email and commission_pct column of
+employees table with 'not available' and 0.10 for all employees.
+
+
+
+update employees set email = "Not Available", commission_pct = 0.10;
+
+ table employees;
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME     | EMAIL         | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         100 | Steven     | King          | Not Available | 512.123.4567 | 1987-06-17 | AD_PRES |  26400 |            0.1 |        200 |            10 |
+|         101 | Neena      | Kochhar       | Not Available | 512.123.4568 | 1987-06-18 | AD_VP   |  18700 |            0.1 |        200 |            10 |
+|         102 | Lex        | De Haan       | Not Available | 515.123.4569 | 1987-06-19 | AD_VP   |  18700 |            0.1 |        200 |            10 |
+|         103 | Alexander  | Hunold        | Not Available | 590.423.4567 | 1987-06-20 | IT_PROG |   9900 |            0.1 |        103 |            60 |
+|         104 | Bruce      | Ernst         | Not Available | 590.423.4568 | 1987-06-21 | IT_PROG |   6600 |            0.1 |        103 |            60 |
+|         105 | David      | Austin        | Not Available | 590.423.4569 | 1987-06-22 | IT_PROG |   5280 |            0.1 |        103 |            60 |
+|         106 | Valli      | Pataballa     | Not Available | 590.423.4560 | 1987-06-23 | IT_PROG |   5280 |            0.1 |        103 |            60 |
+|         107 | Diana      | Lorentz       | Not Available | 590.423.4567 | 1987-06-24 | IT_PROG |   4620 |            0.1 |        114 |            30 |
+|         108 | Nancy      | Greenberg     | Not Available | 515.124.4569 | 1987-06-25 | SA_MAN  |  13200 |            0.1 |        145 |            80 |
+|         109 | Daniel     | Faviet        | Not Available | 515.124.4169 | 1987-06-26 | SA_MAN  |   9900 |            0.1 |        145 |            80 |
+|         110 | Rohit      | Dharmadhikari | Not Available | 9923175682   | 2025-12-12 | IT_PROG |  55000 |            0.1 |        103 |            60 |
+|         111 | Sejal      | Dharmadhikari | Not Available | 7706070656   | 2025-11-11 | SA_MAN  |  49500 |            0.1 |        145 |            80 |
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
