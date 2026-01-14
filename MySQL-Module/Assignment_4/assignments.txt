@@ -1,0 +1,344 @@
+1. Write a query to display the names (first_name, last_name) using alias name “First Name", "Last Name.
+select first_name "First Name",last_name "Last_Name" from employees;
++------------+---------------+
+| First Name | Last_Name     |
++------------+---------------+
+| Steven     | King          |
+| Neena      | Kochhar       |
+| Lex        | De Haan       |
+| Alexander  | Hunold        |
+| Bruce      | Ernst         |
+| David      | Austin        |
+| Valli      | Pataballa     |
+| Diana      | Lorentz       |
+| Nancy      | Greenberg     |
+| Daniel     | Faviet        |
+| Rohit      | Dharmadhikari |
+| Sejal      | Dharmadhikari |
++------------+---------------+
+
+------------------------------------------------------------------------------------------------------------------------
+2. Write a query to get unique department ID from employee table.
+
+select distinct employee_id from employees;
++-------------+
+| employee_id |
++-------------+
+|         100 |
+|         101 |
+|         102 |
+|         103 |
+|         104 |
+|         105 |
+|         106 |
+|         107 |
+|         108 |
+|         109 |
+|         110 |
+|         111 |
+
+------------------------------------------------------------------------------------------------------------------------
+3. Write a query to get all employee details from the employee table order by first name, descending
+
+select * from employees
+    -> order by first_name desc;
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME     | EMAIL         | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         106 | Valli      | Pataballa     | Not Available | 590.423.4560 | 1987-06-23 | IT_PROG |   5280 |            0.1 |        103 |            60 |
+|         100 | Steven     | King          | Not Available | 512.123.4567 | 1987-06-17 | AD_PRES |  26400 |            0.1 |        200 |            10 |
+|         111 | Sejal      | Dharmadhikari | Not Available | 7706070656   | 2025-11-11 | SA_MAN  |  49500 |            0.1 |        145 |            80 |
+|         110 | Rohit      | Dharmadhikari | Not Available | 9923175682   | 2025-12-12 | IT_PROG |  55000 |            0.1 |        103 |            60 |
+|         101 | Neena      | Kochhar       | Not Available | 512.123.4568 | 1987-06-18 | AD_VP   |  18700 |            0.1 |        200 |            10 |
+|         108 | Nancy      | Greenberg     | Not Available | 515.124.4569 | 1987-06-25 | SA_MAN  |  13200 |            0.1 |        145 |            80 |
+|         102 | Lex        | De Haan       | Not Available | 515.123.4569 | 1987-06-19 | AD_VP   |  18700 |            0.1 |        200 |            10 |
+|         107 | Diana      | Lorentz       | Not Available | 590.423.4567 | 1987-06-24 | IT_PROG |   4620 |            0.1 |        114 |            30 |
+|         105 | David      | Austin        | Not Available | 590.423.4569 | 1987-06-22 | IT_PROG |   5280 |            0.1 |        103 |            60 |
+|         109 | Daniel     | Faviet        | Not Available | 515.124.4169 | 1987-06-26 | SA_MAN  |   9900 |            0.1 |        145 |            80 |
+|         104 | Bruce      | Ernst         | Not Available | 590.423.4568 | 1987-06-21 | IT_PROG |   6600 |            0.1 |        103 |            60 |
+|         103 | Alexander  | Hunold        | Not Available | 590.423.4567 | 1987-06-20 | IT_PROG |   9900 |            0.1 |        103 |            60 |
++-------------+------------+---------------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+
+------------------------------------------------------------------------------------------------------------------------
+4. Write a query to get the names (first_name, last_name), salary, PF of all
+the employees (PF is calculated as 15% of salary).
+
+select first_name,last_name,salary, salary*0.15 as PF from employees;
++------------+---------------+--------+------+
+| first_name | last_name     | salary | PF   |
++------------+---------------+--------+------+
+| Steven     | King          |  26400 | 3960 |
+| Neena      | Kochhar       |  18700 | 2805 |
+| Lex        | De Haan       |  18700 | 2805 |
+| Alexander  | Hunold        |   9900 | 1485 |
+| Bruce      | Ernst         |   6600 |  990 |
+| David      | Austin        |   5280 |  792 |
+| Valli      | Pataballa     |   5280 |  792 |
+| Diana      | Lorentz       |   4620 |  693 |
+| Nancy      | Greenberg     |  13200 | 1980 |
+| Daniel     | Faviet        |   9900 | 1485 |
+| Rohit      | Dharmadhikari |  55000 | 8250 |
+| Sejal      | Dharmadhikari |  49500 | 7425 |
++------------+---------------+--------+------+
+
+------------------------------------------------------------------------------------------------------------------------
+5. Write a query to get the employee ID, names (first_name, last_name), salary in ascending order of salary.
+
+select employee_id,first_name,last_name,salary from employees order by salary;
++-------------+------------+---------------+--------+
+| employee_id | first_name | last_name     | salary |
++-------------+------------+---------------+--------+
+|         107 | Diana      | Lorentz       |   4620 |
+|         105 | David      | Austin        |   5280 |
+|         106 | Valli      | Pataballa     |   5280 |
+|         104 | Bruce      | Ernst         |   6600 |
+|         103 | Alexander  | Hunold        |   9900 |
+|         109 | Daniel     | Faviet        |   9900 |
+|         108 | Nancy      | Greenberg     |  13200 |
+|         101 | Neena      | Kochhar       |  18700 |
+|         102 | Lex        | De Haan       |  18700 |
+|         100 | Steven     | King          |  26400 |
+|         111 | Sejal      | Dharmadhikari |  49500 |
+|         110 | Rohit      | Dharmadhikari |  55000 |
++-------------+------------+---------------+--------+
+
+------------------------------------------------------------------------------------------------------------------------
+6. Write a query to get the total salaries payable to employees. select sum(salary) from employees;
++-------------+
+| sum(salary) |
++-------------+
+|      223080 |
++-------------+
+
+
+------------------------------------------------------------------------------------------------------------------------
+7. Write a query to get the maximum and minimum salary from employees table.
+
+ select max(salary) "Maximum Salary",min(salary) "Minimum Salary " from employees;
++----------------+-----------------+
+| Maximum Salary | Minimum Salary  |
++----------------+-----------------+
+|          55000 |            4620 |
++----------------+-----------------+
+
+------------------------------------------------------------------------------------------------------------------------
+8. Write a query to get the average salary and number of employees in the employees table.
+
+select avg(salary) "Average Salary",count(*) "No Of Employees " from employees;
++----------------+------------------+
+| Average Salary | No Of Employees  |
++----------------+------------------+
+|          18590 |               12 |
++----------------+------------------+
+
+------------------------------------------------------------------------------------------------------------------------
+9. Write a query to get the number of employees working with the company.
+select count(*) from employees;
++----------+
+| count(*) |
++----------+
+|       12 |
++----------+
+------------------------------------------------------------------------------------------------------------------------
+10.Write a query to get the number of jobs available in the employees table
+
+
+mysql> select distinct(job_id) "NO OF JOBS AVAILABLE IN THE COMPANY" from employees;
++-------------------------------------+
+| NO OF JOBS AVAILABLE IN THE COMPANY |
++-------------------------------------+
+| AD_PRES                             |
+| AD_VP                               |
+| IT_PROG                             |
+| SA_MAN                              |
++-------------------------------------+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+11.Write a query to select first 10 records from a table.
+
+select * from employees limit 10;
++-------------+------------+-----------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | EMAIL         | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+-----------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         100 | Steven     | King      | Not Available | 512.123.4567 | 1987-06-17 | AD_PRES |  26400 |            0.1 |        200 |            10 |
+|         101 | Neena      | Kochhar   | Not Available | 512.123.4568 | 1987-06-18 | AD_VP   |  18700 |            0.1 |        200 |            10 |
+|         102 | Lex        | De Haan   | Not Available | 515.123.4569 | 1987-06-19 | AD_VP   |  18700 |            0.1 |        200 |            10 |
+|         103 | Alexander  | Hunold    | Not Available | 590.423.4567 | 1987-06-20 | IT_PROG |   9900 |            0.1 |        103 |            60 |
+|         104 | Bruce      | Ernst     | Not Available | 590.423.4568 | 1987-06-21 | IT_PROG |   6600 |            0.1 |        103 |            60 |
+|         105 | David      | Austin    | Not Available | 590.423.4569 | 1987-06-22 | IT_PROG |   5280 |            0.1 |        103 |            60 |
+|         106 | Valli      | Pataballa | Not Available | 590.423.4560 | 1987-06-23 | IT_PROG |   5280 |            0.1 |        103 |            60 |
+|         107 | Diana      | Lorentz   | Not Available | 590.423.4567 | 1987-06-24 | IT_PROG |   4620 |            0.1 |        114 |            30 |
+|         108 | Nancy      | Greenberg | Not Available | 515.124.4569 | 1987-06-25 | SA_MAN  |  13200 |            0.1 |        145 |            80 |
+|         109 | Daniel     | Faviet    | Not Available | 515.124.4169 | 1987-06-26 | SA_MAN  |   9900 |            0.1 |        145 |            80 |
++-------------+------------+-----------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+
+
+------------------------------------------------------------------------------------------------------------------------
+12.Write a query to display the name (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000.
+
+select first_name "First Name", last_name "Last Name",salary from employees
+    -> where salary not between 10000 and 15000;
++------------+---------------+--------+
+| First Name | Last Name     | salary |
++------------+---------------+--------+
+| Steven     | King          |  26400 |
+| Neena      | Kochhar       |  18700 |
+| Lex        | De Haan       |  18700 |
+| Alexander  | Hunold        |   9900 |
+| Bruce      | Ernst         |   6600 |
+| David      | Austin        |   5280 |
+| Valli      | Pataballa     |   5280 |
+| Diana      | Lorentz       |   4620 |
+| Daniel     | Faviet        |   9900 |
+| Rohit      | Dharmadhikari |  55000 |
+| Sejal      | Dharmadhikari |  49500 |
++------------+---------------+--------+
+
+
+------------------------------------------------------------------------------------------------------------------------
+13.Write a query to display the name (first_name, last_name) and department ID of all employees in departments 30 or 100 in ascending order.
+ select first_name "First Name", last_name "Last Name",department_id "Dept_ID" from employees
+    -> where department_id in (30,100)
+    -> order by department_id;
++------------+-----------+---------+
+| First Name | Last Name | Dept_ID |
++------------+-----------+---------+
+| Diana      | Lorentz   |      30 |
++------------+-----------+---------+
+
+
+------------------------------------------------------------------------------------------------------------------------
+14.Write a query to display the name (first_name, last_name) and salary for
+all employees whose salary is not in the range $10,000 through $15,000
+and are in department 30 or 100.
+
+select first_name "First Name", last_name "Last Name",salary, department_id from employees
+    -> where salary not between 10000 and 15000 && department_id in (30,100);
++------------+-----------+--------+---------------+
+| First Name | Last Name | salary | department_id |
++------------+-----------+--------+---------------+
+| Diana      | Lorentz   |   4620 |            30 |
++------------+-----------+--------+---------------+
+
+------------------------------------------------------------------------------------------------------------------------
+15.Write a query to display the name (first_name, last_name) and hire date for all employees who were hired in 1987.
+
+
+select first_name "First Name", last_name "Last Name",hire_date "HIRE_DATE" from employees
+    -> where year(hire_date) = 1987;
++------------+-----------+------------+
+| First Name | Last Name | HIRE_DATE  |
++------------+-----------+------------+
+| Steven     | King      | 1987-06-17 |
+| Neena      | Kochhar   | 1987-06-18 |
+| Lex        | De Haan   | 1987-06-19 |
+| Alexander  | Hunold    | 1987-06-20 |
+| Bruce      | Ernst     | 1987-06-21 |
+| David      | Austin    | 1987-06-22 |
+| Valli      | Pataballa | 1987-06-23 |
+| Diana      | Lorentz   | 1987-06-24 |
+| Nancy      | Greenberg | 1987-06-25 |
+| Daniel     | Faviet    | 1987-06-26 |
++------------+-----------+------------+
+
+
+------------------------------------------------------------------------------------------------------------------------
+16.Write a query to display the first_name of all employees who have both "b" and "c" in their first name
+
+select first_name "First Name" from employees
+    -> where first_name like '%b%' and first_name like '%c%';
++------------+
+| First Name |
++------------+
+| Bruce      |
++------------+
+
+------------------------------------------------------------------------------------------------------------------------
+17.Write a query to display the last name, job, and salary for all employees whose job is that of a Programmer or a Shipping Clerk, and whose salary
+is not equal to $4,500, $10,000, or $15,000.
+
+alter table employees
+    -> add foreign key(department_id)
+    -> references department(department_id);
+
+select last_name "LAST NAME",job_id "JOB_ID",salary "SALARY" from employees
+    -> where department_id in (select department_id from department where department_name in ('IT','Shipping'))
+    -> and salary not in (4500,10000,15000);
++---------------+---------+--------+
+| LAST NAME     | JOB_ID  | SALARY |
++---------------+---------+--------+
+| Hunold        | IT_PROG |   9900 |
+| Ernst         | IT_PROG |   6600 |
+| Austin        | IT_PROG |   5280 |
+| Pataballa     | IT_PROG |   5280 |
+| Dharmadhikari | IT_PROG |  55000 |
++---------------+---------+--------+
+
+------------------------------------------------------------------------------------------------------------------------
+18.Write a query to display the last name of employees whose names have exactly 6 characters.
+select last_name from employees
+    -> where length(last_name) = 6;
++-----------+
+| last_name |
++-----------+
+| Hunold    |
+| Austin    |
+| Faviet    |
++-----------+
+
+------------------------------------------------------------------------------------------------------------------------
+19.Write a query to display the last name of employees having 'e' as the third character.
+
+select last_name from employees
+    -> where last_name like '__e%';
++-----------+
+| last_name |
++-----------+
+| Greenberg |
++-----------+
+
+------------------------------------------------------------------------------------------------------------------------
+20.Write a query to display the jobs/designations available in the employees table.
+
+select distinct job_id "DESIGNATIONS" from employees
+    -> ;
++--------------+
+| DESIGNATIONS |
++--------------+
+| AD_PRES      |
+| AD_VP        |
+| IT_PROG      |
+| SA_MAN       |
++--------------+
+
+------------------------------------------------------------------------------------------------------------------------
+21.Write a query to select all record from employees where last name in 'BLAKE', 'SCOTT', 'KING' and 'FORD'
+select * from employees
+    -> where last_name in ('BLAKE','SCOTT','KING','FORD');
++-------------+------------+-----------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | EMAIL         | PHONE_NUMBER | HIRE_DATE  | job_id  | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+------------+-----------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+|         100 | Steven     | King      | Not Available | 512.123.4567 | 1987-06-17 | AD_PRES |  26400 |            0.1 |        200 |            10 |
++-------------+------------+-----------+---------------+--------------+------------+---------+--------+----------------+------------+---------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
